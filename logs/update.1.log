@@ -1,0 +1,60 @@
+Loading rmate/1.5.8
+  Loading requirement: ruby/2.5.0
+Loading funannotate/1.8
+  Unloading conflict: anaconda3/4.5.4
+  Loading requirement: miniconda3/4.3.31 jellyfish/2.3.0 lp_solve/5.5 EVM/1.1.1-live genemarkESET/4.62_lic bamtools/2.4.0 hmmer/3 gmap/2019-03-04 bedtools/2.29.2 tbl2asn/25.8 boost/1.68.0
+    augustus/3.3.3 diamond/2.0.8 exonerate/2.2.0 ncbi-blast/2.2.31+ cdbfasta/06272015 htslib/1.11 samtools/1.11 braker/2.1.4 mummer/4.0 RAxML/8.2.12 mafft/7.427 trimal/1.4.1 java/13.0.1
+    trimmomatic/0.36 exonerate/2.4.1 blat/35 tRNAscan/1.3.1 proteinortho/6.0.20 kent/318 signalp/5.0b fasta/36.3.8h bowtie2/2.4.1 salmon/1.0.0 java/13 trinity-rnaseq/2.11.0 hisat2/2.2.1
+    kallisto/0.46.2 gmap/2017-11-15 PASA/2.4.1 minimap2/2.20 htslib/1.12 samtools/1.12 stringtie/2.1.1 CodingQuarry/2.0
+[Sep 07 02:53 PM]: OS: CentOS Linux 7, 64 cores, ~ 528 GB RAM. Python: 3.8.5
+[Sep 07 02:53 PM]: Running 1.8.9
+[Sep 07 02:53 PM]: Found relevant files in annotate/Basidiobolus_ranarum_AG-B5.v1/training, will re-use them:
+	Forward reads: annotate/Basidiobolus_ranarum_AG-B5.v1/training/left.fq.gz
+	Reverse reads: annotate/Basidiobolus_ranarum_AG-B5.v1/training/right.fq.gz
+	Forward Q-trimmed reads: annotate/Basidiobolus_ranarum_AG-B5.v1/training/trimmomatic/trimmed_left.fastq.gz
+	Reverse Q-trimmed reads: annotate/Basidiobolus_ranarum_AG-B5.v1/training/trimmomatic/trimmed_right.fastq.gz
+	Forward normalized reads: annotate/Basidiobolus_ranarum_AG-B5.v1/training/normalize/left.norm.fq
+	Reverse normalized reads: annotate/Basidiobolus_ranarum_AG-B5.v1/training/normalize/right.norm.fq
+	Trinity results: annotate/Basidiobolus_ranarum_AG-B5.v1/training/funannotate_train.trinity-GG.fasta
+	PASA config file: annotate/Basidiobolus_ranarum_AG-B5.v1/training/pasa/alignAssembly.txt
+	BAM alignments: annotate/Basidiobolus_ranarum_AG-B5.v1/training/funannotate_train.coordSorted.bam
+	StringTie GTF: annotate/Basidiobolus_ranarum_AG-B5.v1/training/funannotate_train.stringtie.gtf
+[Sep 07 02:53 PM]: Reannotating Basidiobolus ranarum, NCBI accession: None
+[Sep 07 02:53 PM]: Previous annotation consists of: 18,031 protein coding gene models and 596 non-coding gene models
+[Sep 07 02:53 PM]: Existing BAM alignments found: annotate/Basidiobolus_ranarum_AG-B5.v1/update_misc/trinity.alignments.bam, annotate/Basidiobolus_ranarum_AG-B5.v1/update_misc/transcript.alignments.bam
+[Sep 07 02:53 PM]: Skipping PASA, found existing output: annotate/Basidiobolus_ranarum_AG-B5.v1/update_misc/pasa_final.gff3
+[Sep 07 02:53 PM]: Existing Kallisto output found: annotate/Basidiobolus_ranarum_AG-B5.v1/update_misc/kallisto.tsv
+[Sep 07 02:53 PM]: Parsing Kallisto results. Keeping alt-splicing transcripts if expressed at least 10.0% of highest transcript per locus.
+[Sep 07 02:53 PM]: Wrote 19,653 transcripts derived from 18,046 protein coding loci.
+[Sep 07 02:53 PM]: Validating gene models (renaming, checking translations, filtering, etc)
+[Sep 07 02:53 PM]: Writing 18,638 loci to TBL format: dropped 0 overlapping, 2 too short, and 0 frameshift gene models
+[Sep 07 02:53 PM]: Converting to Genbank format
+[Sep 07 02:55 PM]: Collecting final annotation files
+[Sep 07 02:56 PM]: Parsing GenBank files...comparing annotation
+[Sep 07 03:07 PM]: Updated annotation complete:
+-------------------------------------------------------
+Total Gene Models:	18,638
+Total transcripts:	20,246
+New Gene Models:	54
+No Change:		7,031
+Update UTRs:		11,509
+Exons Changed:		41
+Exons/CDS Changed:	3
+Dropped Models:		2
+CDS AED:		0.005
+mRNA AED:		0.074
+-------------------------------------------------------
+[Sep 07 03:07 PM]: Funannotate update is finished, output files are in the annotate/Basidiobolus_ranarum_AG-B5.v1/update_results folder
+[Sep 07 03:07 PM]: Your next step might be functional annotation, suggested commands:
+-------------------------------------------------------
+Run InterProScan (Docker required): 
+funannotate iprscan -i annotate/Basidiobolus_ranarum_AG-B5.v1 -m docker -c 4
+
+Run antiSMASH: 
+funannotate remote -i annotate/Basidiobolus_ranarum_AG-B5.v1 -m antismash -e youremail@server.edu
+
+Annotate Genome: 
+funannotate annotate -i annotate/Basidiobolus_ranarum_AG-B5.v1 --cpus 4 --sbt yourSBTfile.txt
+-------------------------------------------------------
+                
+-------------------------------------------------------
