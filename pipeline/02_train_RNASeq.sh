@@ -1,16 +1,15 @@
 #!/bin/bash -l
 
 #SBATCH --nodes=1
-#SBATCH --ntasks=16
-#SBATCH --mem 256gb -p intel,batch
+#SBATCH --ntasks=24
+#SBATCH --mem 128gb -p batch
 #SBATCH --time=3-00:15:00
 #SBATCH --output=logs/train.%a.log
 #SBATCH --job-name="TrainFun"
 
 # Define program name
-module unload miniconda3
 module load funannotate
-MEM=256G
+MEM=128G
 
 export AUGUSTUS_CONFIG_PATH=$(realpath lib/augustus/3.3/config)
 # Set some vars

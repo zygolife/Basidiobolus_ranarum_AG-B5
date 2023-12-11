@@ -31,10 +31,10 @@ SAMPLEFILE=samples.csv
 IFS=,
 tail -n +2 $SAMPLEFILE | sed -n ${N}p | while read SPECIES STRAIN VERSION PHYLUM BIOSAMPLE BIOPROJECT LOCUSTAG
 do
-	BASE=$(echo -n ${SPECIES}_${STRAIN} | perl -p -e 's/\s+/_/g')
+	BASE=$(echo -n ${SPECIES}_${STRAIN}| perl -p -e 's/\s+/_/g')
 	for type in predict update
 	do
-	    INPEP=$ANNOTFOLDER/${BASE}/${type}_results/${BASE}.proteins.fa
+	    INPEP=$ANNOTFOLDER/${BASE}.${VERSION}/${type}_results/${BASE}.proteins.fa
 	    if [ ! -s $INPEP ]; then
 		echo "No Proteins from prediction run yet"
 		echo "missing $INPEP"

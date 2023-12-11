@@ -1,10 +1,7 @@
-#!/bin/bash
+#!/bin/bash -l
 #SBATCH --nodes 1 --ntasks 8 --mem 16G --out logs/antismash.%a.log -J antismash
 
-module unload miniconda2
-module unload miniconda3
-module unload anaconda3
-module load antismash/6.0.0
+module load antismash
 which perl
 which antismash
 hostname

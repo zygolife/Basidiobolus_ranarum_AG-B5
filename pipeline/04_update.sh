@@ -1,12 +1,6 @@
-#!/bin/bash
+#!/bin/bash -l
 #SBATCH -p batch --time 5-0:00:00 --ntasks 16 --nodes 1 --mem 48G --out logs/update.%a.log
 
-module unload perl
-module unload miniconda2
-module unload miniconda3
-module load anaconda3
-module unload perl
-module unload python
 module load funannotate
 
 #PASAHOMEPATH=$(dirname `which Launch_PASA_pipeline.pl`)

@@ -62,7 +62,6 @@ do
        mv funannotate-mask.log $LOGS/masklog_long.$name.log
        ls -l
      fi
-     popd
   else
      echo "Skipping ${name} as masked already"
   fi

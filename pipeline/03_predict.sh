@@ -1,11 +1,6 @@
-#!/bin/bash
-#SBATCH -p intel,batch --time 3-0:00:00 --ntasks 24 --nodes 1 --mem 96G --out logs/predict.%a.log
+#!/bin/bash -l
+#SBATCH -p intel --time 3-0:00:00 --ntasks 24 --nodes 1 --mem 96G --out logs/predict.%a.log
 
-module unload miniconda2
-module unload anaconda3
-module unload miniconda3
-module unload perl
-module unload python
 module load funannotate
 module load workspace/scratch
 
@@ -42,12 +37,6 @@ export AUGUSTUS_CONFIG_PATH=$(realpath lib/augustus/3.3/config)
 
 export FUNANNOTATE_DB=/bigdata/stajichlab/shared/lib/funannotate_db
 # make genemark key link required to run it
-if [ ! -s ~/.gm_key ]; then
-	module  load  genemarkESET/4.62_lic
-	GMFOLDER=`dirname $(which gmhmme3)`
-  ln -s $GMFOLDER/.gm_key ~/.gm_key
-  module unload genemarkESET
-fi
 
 IFS=,
 tail -n +2 $SAMPFILE | sed -n ${N}p | while read SPECIES STRAIN VERSION PHYLUM BIOSAMPLE BIOPROJECT LOCUSTAG
